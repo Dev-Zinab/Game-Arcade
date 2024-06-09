@@ -1,8 +1,6 @@
 
     
 import SpriteKit
-import UIKit
-import GameplayKit
 import GameKit
 
 
@@ -81,12 +79,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let backgroundMusic = SKAudioNode(fileNamed: "scenegh.wav")
         backgroundMusic.autoplayLooped = true
         addChild(backgroundMusic)
+        
     }
     func setupScene() {
+
         self.size = CGSize(width: 812, height: 375)
         flag = childNode(withName: "flag")
-        player1 = childNode(withName: "player1")
-        player2 = childNode(withName: "player2")
+        player1 = self.childNode(withName: "player1")as? SKSpriteNode
+        player2 = self.childNode(withName: "player2")as? SKSpriteNode
+
         enemy = childNode(withName: "pinkOcto")
         enemy2 = childNode(withName: "purblOcto")
         joystick = childNode(withName: "joystick")
@@ -128,6 +129,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player1StateMachine?.enter(IdleState.self)
         player2StateMachine?.enter(IdleState.self)
         
+
+
+        
     }
     
     func setupUI() {
@@ -153,7 +157,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundMusic.autoplayLooped = true
         addChild(backgroundMusic)
     }
-    
+
     
     @objc func updateTimer() {
         if timeRemaining > 0 {
@@ -171,6 +175,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         }
         
+    }
+    func updatePlayer1Position(to position: CGPoint) {
+        if let player1 = player1 {
+            player1.position = position
+        }
+    }
+
+    func updatePlayer2Position(to position: CGPoint) {
+        if let player2 = player2 {
+            player2.position = position
+        }
     }
 
 
