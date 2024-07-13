@@ -37,7 +37,7 @@ Multiplayers core game play to embrace the essence of Faza’a. solving challeng
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/zinab1991/Game-Arcade
+   git clone https://github.com/Dev-Zinab/Game-Arcade
 
 ---
 
